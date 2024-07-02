@@ -1,0 +1,145 @@
+<style>
+ 
+    </style>
+
+    <div class="trading-page">
+      <h1>RWA Trading Page</h1>
+      <div class="RWA-container">
+        <div class="RWA-card">
+          <h2>Microsoft (MSFT)</h2>
+          <p class="price">$<span id="MSFT-price"></span></p>
+        </div>
+        <div class="RWA-card">
+          <h2>Apple (AAPL)</h2>
+          <p class="price">$<span id="AAPL-price"></span></p>
+        </div>
+        <div class="RWA-card">
+          <h2>Tesla (TSLA)</h2>
+          <p class="price">$<span id="Tesla-price"></span></p>
+        </div>
+        <div class="RWA-card">
+          <h2>Binance Coin (Netflix)</h2>
+          <p class="price">$<span id="Netflix-price"></span></p>
+        </div>
+        <div class="RWA-card">
+          <h2>Adobe (ADBE)</h2>
+          <p class="price">$<span id="Adobe-price"></span></p>
+        </div>
+        <div class="RWA-card">
+          <h2>Comcast (Comcast)</h2>
+          <p class="price">$<span id="Comcast-price"></span></p>
+        </div>
+        <div class="RWA-card">
+          <h2>Uber (Uber)</h2>
+          <p class="price">$<span id="Uber-price"></span></p>
+        </div>
+        <div class="RWA-card">
+          <h2>IBM (IBM)</h2>
+          <p class="price">$<span id="IBM-price"></span></p>
+        </div>
+      </div>
+    </div>
+
+    <script>
+   
+    </script>
+
+   
+    <style>
+   
+    .trading-page {
+      font-family: Arial, sans-serif;
+      margin: 0 auto;
+      max-width: 1200px;
+      padding: 20px;
+    }
+
+    .trading-page h1 {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .RWA-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      margin-bottom: 30px;
+    }
+
+    .RWA-card {
+      background-color: #f5f5f5;
+      border-radius: 5px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      flex-basis: calc(25% - 10px);
+      margin-bottom: 20px;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .RWA-card h2 {
+      font-size: 1.5rem;
+      margin-bottom: 10px;
+    }
+
+    .price {
+      font-size: 1.2rem;
+      font-weight: bold;
+      margin-top: 10px;
+    }
+    </style>
+
+    <div class="trading-page">
+      <h1>RWA Trading Page</h1>
+      <div class="RWA-container">
+        <div class="RWA-card">
+          <h2>Microsoft (MSFT)</h2>
+          <p class="price">$<span id="MSFT-price"></span></p>
+        </div>
+        <div class="RWA-card">
+          <h2>Apple (AAPL)</h2>
+          <p class="price">$<span id="AAPL-price"></span></p>
+        </div>
+        <div class="RWA-card">
+          <h2>Tesla (TSLA)</h2>
+          <p class="price">$<span id="Tesla-price"></span></p>
+        </div>
+        <div class="RWA-card">
+          <h2>Binance Coin (Netflix)</h2>
+          <p class="price">$<span id="Netflix-price"></span></p>
+        </div>
+        <div class="RWA-card">
+          <h2>Adobe (ADBE)</h2>
+          <p class="price">$<span id="Adobe-price"></span></p>
+        </div>
+        <div class="RWA-card">
+          <h2>Comcast (Comcast)</h2>
+          <p class="price">$<span id="Comcast-price"></span></p>
+        </div>
+        <div class="RWA-card">
+          <h2>Uber (Uber)</h2>
+          <p class="price">$<span id="Uber-price"></span></p>
+        </div>
+        <div class="RWA-card">
+          <h2>IBM (IBM)</h2>
+          <p class="price">$<span id="IBM-price"></span></p>
+        </div>
+      </div>
+    </div>
+
+    <script>
+
+
+    fetch('https://api.coingecko.com/api/v3/simple/price?ids=Microsoft&vs_currencies=usd')
+      .then(response => response.json())
+      .then(data => {
+        const MSFTPrice = document.getElementById('MSFT-price');
+        MSFTPrice.innerText = data.Microsoft.usd.toFixed(2);
+      })
+      .catch(error => {
+        conADBEe.error('Error fetching the price of Microsoft:', error);
+      });
+
+
+    </script>
+
+   

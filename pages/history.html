@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    table {
+      font-family: Arial, sans-serif;
+      border-collapse: collapse;
+      width: 100%;
+    }
+
+    td, th {
+      border: 1px solid #dddddd;
+      text-align: left;
+      padding: 8px;
+    }
+
+    tr:nth-child(even) {
+      background-color: #dddddd;
+    }
+
+  .logo {
+      width: 40px;
+      height: 40px;
+      object-fit: cover;
+    }
+  </style>
+</head>
+<body>
+  <h1>Order History</h1>
+  <table>
+    <thead>
+      <tr>
+        <th>Buy/Sell</th>
+        <th>Amount</th>
+        <th>Quantity</th>
+        <th>Company Name</th>
+        
+      </tr>
+    </thead>
+    <tbody id="order-history">
+      <!-- Orders will be inserted here -->
+    </tbody>
+  </table>
+
+  <script>
+    // Sample data
+    const orders = [
+      { buySell: 'Buy', amount: 100, quantity: 2, company: 'Microsoft', logo: 'https://cdn.icon-icons.com/icons2/195/PNG/256/Microsoft_23401.png' },
+      { buySell: 'Sell', amount: 50, quantity: 1, company: 'Apple', logo: 'https://cdn.icon-icons.com/icons2/1/PNG/256/social_apple_mac_65.png' },
+      { buySell: 'Buy', amount: 200, quantity: 4, company: 'Tesla', logo: 'https://cdn.icon-icons.com/icons2/2402/PNG/96/tesla_logo_icon_145766.png' },
+      { buySell: 'Sell', amount: 75, quantity: 3, company: 'Netflix', logo: 'https://cdn.icon-icons.com/icons2/2657/PNG/96/netflix_icon_161073.png' },
+      { buySell: 'Buy', amount: 150, quantity: 5, company: 'Adobe', logo: 'https://cdn.icon-icons.com/icons2/886/PNG/96/file-expand_Pdf_icon-icons.com_68956.png' },
+      { buySell: 'Sell', amount: 110, quantity: 2, company: 'Comcast', logo: 'https://cdn.icon-icons.com/icons2/2699/PNG/512/comcast_logo_icon_170338.png' },
+      { buySell: 'Buy', amount: 120, quantity: 3, company: 'Uber', logo: 'https://cdn.icon-icons.com/icons2/2108/PNG/512/uber_icon_130805.png' },
+      { buySell: 'Sell', amount: 140, quantity: 4, company: 'IBM', logo: 'https://cdn.icon-icons.com/icons2/2108/PNG/512/ibm_icon_130909.png' },
+    ];
+
+    // Generate the order history table
+    const orderHistory = document.getElementById('order-history');
+    orders.forEach(order => {
+      const row = document.createElement('tr');
+      row.innerHTML = `
+        <td>${order.buySell}</td>
+        <td>${order.amount}</td>
+        <td>${order.quantity}</td>
+        <td><img src="${order.logo}"  class="logo">${order.company}</td>
+      `;
+      orderHistory.appendChild(row);
+    });
+    function addOrderToHistory(order) {
+  // Create the table row
+  const row = document.createElement('tr');
+
+  // Add the order data to the row
+  row.innerHTML = `
+    <td>${order.room}</td>
+    <td>${order.date}</td>
+    <td>${order.price}</td>
+    <td>${order.status}</td>
+  `;
+
+  // Add the row to the history table
+  const orderHistory = document.getElementById('order-history');
+  orderHistory.appendChild(row);
+}
+function clearForm() {
+  // Clear the selected room and date
+  document.querySelector('input[name="room"]').checked = false;
+  document.querySelector('input[name="date"]').checked = false;
+}
+  </script>
+</body>
+</html>

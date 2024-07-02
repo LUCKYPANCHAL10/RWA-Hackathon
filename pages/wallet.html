@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wallet</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-image: url('/assets/images/wbg.jpg');
+        }
+
+       .container {
+            margin-left: 38%;
+            margin-top: 10%;
+            height: 350px;
+            width: 350px;
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            background-image: url('https://st2.depositphotos.com/2791409/5321/i/950/depositphotos_53215651-stock-photo-glass-texture-background.jpg');
+        }
+
+       .container h3 {
+            padding-bottom: 10px;
+            font-weight: 800;
+            font-size: 20px;
+            padding-left: 90px;
+        }
+        ul{
+            list-style-type: none;
+        }
+       .wallet {
+            padding-bottom: 10px;
+            font-weight: 500;
+            font-size: 20px;
+            padding-left: 20px;
+        }
+        
+       .wallet:hover{
+            height: 30px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+       .wallet.logo {
+            padding-right: 10px;
+            padding-top: 30px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h3>CONNECT TO WALLET</h3>
+        <ul>
+            <li onclick="redirectToQRCode('rainbow')">
+                <div class="wallet">
+                    <span class="logo"><img
+                            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSj-QBbpJo3nanOsaVuqjDYGamvojUG2R6gtIO074O21A&s"
+                            alt="image" style="max-height: 20px;"></span>
+                    <span class="WalletName">Rainbow</span>
+                </div>
+
+            </li>
+            <li onclick="redirectToQRCode('coinbase')">
+                <div class="wallet">
+                    <span class="logo"><img
+                            src="https://play-lh.googleusercontent.com/wrgUujbq5kbn4Wd4tzyhQnxOXkjiGqq39N4zBvCHmxpIiKcZw_Pb065KTWWlnoejsg"
+                            alt="image" style="max-height: 20px;"></span>
+                    <span class="WalletName">Coinbase Wallet</span>
+                </div>
+
+            </li>
+            <li onclick="redirectToQRCode('metamask')">
+
+                <div class="wallet">
+                    <span class="logo"><img
+                            src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/36/MetaMask_Fox.svg/1200px-MetaMask_Fox.svg.png"
+                            alt="image" style="max-height: 20px;"></span>
+                    <span class="WalletName">MetaMask</span>
+                </div>
+            </li>
+            <li onclick="redirectToQRCode('walletconnect')">
+                <div class="wallet">
+                    <span class="logo"><img
+                            src="https://seeklogo.com/images/W/walletconnect-logo-EE83B50C97-seeklogo.com.png"
+                            alt="image" style="max-height: 20px;"></span>
+                    <span class="WalletName">WalletConnect</span>
+                </div>
+
+            </li>
+
+        </ul>
+    </div>
+    <script>
+        function redirectToQRCode(walletName) {
+            var qrCodeUrl = 'https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=demo' + walletName;
+            window.location.href = qrCodeUrl;
+        }
+    </script>
+</body>
+
+</html>

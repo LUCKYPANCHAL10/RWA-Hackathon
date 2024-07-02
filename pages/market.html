@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RWA Market Profit and Loss</title>
+    <style>
+        body {
+            background-color: #f0f0f0;
+            font-family: Arial, sans-serif;
+            background-image: url('/assets/images/wbg.jpg');
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .card {
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .title {
+            font-size: 24px;
+            font-weight: bold;
+        }
+        .price {
+            font-size: 18px;
+            font-weight: bold;
+            color: green;
+        }
+        .profit-loss {
+            font-size: 18px;
+            font-weight: bold;
+            color: red;
+        }
+        .percent {
+            font-size: 14px;
+            font-weight: bold;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="card">
+            <div class="header">
+                <div class="title">Microsoft</div>
+                <div class="price">$67,757.12</div>
+            </div>
+            <div class="profit-loss">+$5,000.00</div>
+            <div class="percent">+7.7%</div>
+        </div>
+        <div class="card">
+            <div class="header">
+                <div class="title">Apple</div>
+                <div class="price">$4,754.23</div>
+            </div>
+            <div class="profit-loss">-$1,000.00</div>
+            <div class="percent">-20.0%</div>
+        </div>
+        <div class="card">
+            <div class="header">
+                <div class="title">Tesla</div>
+                <div class="price">$1.00</div>
+            </div>
+            <div class="profit-loss">$0.00</div>
+            <div class="percent">0.0%</div>
+        </div>
+        <div class="card">
+            <div class="header">
+                <div class="title">Netflix</div>
+                <div class="price">$612.23</div>
+            </div>
+            <div class="profit-loss">+$100.00</div>
+            <div class="percent">+16.6%</div>
+        </div>
+        <div class="card">
+            <div class="header">
+                <div class="title">Adobe</div>
+                <div class="price">$215.23</div>
+            </div>
+            <div class="profit-loss">+$50.00</div>
+            <div class="percent">+23.8%</div>
+        </div>
+        <div class="card">
+            <div class="header">
+                <div class="title">Comcast</div>
+                <div class="price">$1.12</div>
+            </div>
+            <div class="profit-loss">-$0.50</div>
+            <div class="percent">-4.5%</div>
+        </div>
+        <div class="card">
+            <div class="header">
+                <div class="title">Uber</div>
+                <div class="price">$2.12</div>
+            </div>
+            <div class="profit-loss">+$0.25</div>
+            <div class="percent">+12.3%</div>
+        </div>
+        <div class="card">
+            <div class="header">
+                <div class="title">IBM</div>
+                <div class="price">$32.12</div>
+            </div>
+            <div class="profit-loss">-$5.00</div>
+            <div class="percent">-15.4%</div>
+        </div>
+    </div>
+    <script>
+        // Generate random profit/loss and percent change for each RWAcurrency
+        const profitLossData = {
+            MSFT: {
+                amount: Math.random() * 10000 - 5000,
+                percent: Math.random() * 20 - 10,
+            },
+            AAPL: {
+                amount: Math.random() * 1000 - 500,
+                percent: Math.random() * 20 - 10,
+            },
+            TSLA: {
+                amount: 0,
+                percent: 0,
+            },
+            Netflix: {
+                amount: Math.random() * 500 - 250,
+                percent: Math.random() * 20 - 10,
+            },
+            ADBE: {
+                amount: Math.random() * 100 - 50,
+                percent: Math.random() * 20 - 10,
+            },
+            Comcast: {
+                amount: Math.random() * 10 - 5,
+                percent: Math.random() * 10 - 5,
+            },
+            Uber: {
+                amount: Math.random() * 5 - 2.5,
+                percent: Math.random() * 10 - 5,
+            },
+            IBM: {
+                amount: Math.random() * 20 - 10,
+                percent: Math.random() * 20 - 10,
+            },
+        };
+
+        // Set the profit/loss and percent change for each RWAcurrency
+        const profitLossElements = document.querySelectorAll('.profit-loss');
+        const percentElements = document.querySelectorAll('.percent');
+
+        profitLossData.MSFT.amount = parseFloat(profitLossData.MSFT.amount.toFixed(2));
+        profitLossData.AAPL.amount = parseFloat(profitLossData.AAPL.amount.toFixed(2));
+        profitLossData.Netflix.amount = parseFloat(profitLossData.Netflix.amount.toFixed(2));
+        profitLossData.ADBE.amount = parseFloat(profitLossData.ADBE.amount.toFixed(2));
+        profitLossData.Comcast.amount = parseFloat(profitLossData.Comcast.amount.toFixed(2));
+        profitLossData.Uber.amount = parseFloat(profitLossData.Uber.amount.toFixed(2));
+        profitLossData.IBM.amount = parseFloat(profitLossData.IBM.amount.toFixed(2));
+
+        profitLossElements.forEach((element, index) => {
+            element.textContent = `$${profitLossData[Object.keys(profitLossData)[index]].amount.toFixed(2)}`;
+            percentElements[index].textContent = `${profitLossData[Object.keys(profitLossData)[index]].percent}%`;
+        });
+    </script>
+</body>
+</html>

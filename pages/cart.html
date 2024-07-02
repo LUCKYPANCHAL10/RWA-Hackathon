@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Shopping Cart Example</title>
+	<style>
+		body {
+			background-color: #f2f2f2;
+			font-family: Arial, sans-serif;
+		}
+
+		#cart {
+			background-color: white;
+			border: 1px solid #ccc;
+			padding: 20px;
+			width: 300px;
+			position: fixed;
+			top: 0;
+			right: 0;
+			height: 100%;
+			box-shadow: 0 0 10px rgba(0,0,0,0.2);
+			transform: translateX(100%);
+			transition: transform 0.3s ease-out;
+		}
+
+		#cart.visible {
+			transform: translateX(0);
+		}
+
+		#cart h1 {
+			margin-top: 0;
+		}
+
+		#cart-items {
+			list-style-type: none;
+			padding: 0;
+			margin: 0;
+		}
+
+		#cart-items li {
+			background-color: #f2f2f2;
+			border: 1px solid #ccc;
+			padding: 10px;
+			margin-bottom: 5px;
+		}
+
+		#products {
+			background-color: white;
+			border: 1px solid #ccc;
+			padding: 20px;
+			width: 700px;
+			margin: 20px auto;
+		}
+
+		#product-list {
+			list-style-type: none;
+			padding: 0;
+		}
+
+		.product-item {
+			background-color: #f2f2f2;
+			border: 1px solid #ccc;
+			padding: 10px;
+			margin-bottom: 5px;
+			cursor: pointer;
+			transition: background-color 0.3s ease-out;
+		}
+
+		.product-item:hover {
+			background-color: #f9f9f9;
+		}
+
+		.add-to-cart {
+			background-color: #4CAF50;
+			color: white;
+			padding: 10px;
+			border: none;
+			cursor: pointer;
+			display: none;
+		}
+
+		.product-item:hover .add-to-cart {
+			display: block;
+		}
+	</style>
+</head>
+<body>
+	<div id="cart">
+		<h1>Shopping Cart</h1>
+		<button id="cart-toggle">Toggle Cart</button>
+		<ul id="cart-items"></ul>
+		<button id="checkout-button">Checkout</button>
+	</div>
+	<div id="products">
+		<h1>Products</h1>
+		<ul id="product-list">
+			<li class="product-item" data-price="10">
+				<div>Product 1</div>
+				<button class="add-to-cart">Add to cart</button>
+			</li>
+			<li class="product-item" data-price="20">
+				<div>Product 2</div>
+				<button class="add-to-cart">Add to cart</button>
+			</li>
+			<li class="product-item" data-price="30">
+<div>Product 3</div>
+				<button class="add-to-cart">Add to cart</button>
+			</li>
+		</ul>
+	</div>
+	<script>
+		const cart = document.getElementById('cart');
+		const cartItems = document.getElementById('cart-items');
+		const productList = document.getElementById('product-list');
+		const checkoutButton = document.getElementById('checkout-button');
+		const cartToggle = document.getElementById('cart-toggle');
+
+		let cartItemsArray = [];
+
+		productList.addEventListener('click', (e) => {
+			if (e.target.matches('.add-to-cart')) {
+				const product = e.target.parentElement;
+				const price = product.dataset.price;
+				const item = { price };
+
+				cartItemsArray.push(item);
+				updateCart();
+			}
+		});
+
+		checkoutButton.addEventListener('click', () => {
+			alert('Thank you for your purchase!');
+			cartItemsArray = [];
+			updateCart();
+		});
+
+		cartToggle.addEventListener('click', () => {
+			cart.classList.toggle('visible');
+		});
+
+		function updateCart() {
+			cartItems.innerHTML = '';
+			let total = 0;
+
+			cartItemsArray.forEach((item) => {
+				const li = document.createElement('li');
+				li.textContent = `Item: $${item.price}`;
+				cartItems.appendChild(li);
+
+				total += parseInt(item.price);
+			});
+
+			const li = document.createElement('li');
+			li.textContent = `Total: $${total}`;
+			cartItems.appendChild(li);
+		}
+
+		// Generate random background color for each product item
+		const productItems = document.querySelectorAll('.product-item');
+		productItems.forEach((item) => {
+			const randomColor = '#' + Math.floor(Math.random()*16777215).toString(16);
+			item.style.backgroundColor = randomColor;
+		});
+		const bookNowButton = document.getElementById('book-now-button');
+bookNowButton.addEventListener('click', placeOrder);
+function placeOrder() {
+  // Get the selected room and date
+  const selectedRoom = document.querySelector('input[name="room"]:checked').value;
+  const selectedDate = document.querySelector('input[name="date"]:checked').value;
+
+  // Create the order object
+  const order = {
+    room: selectedRoom,
+    date: selectedDate,
+    price: getRoomPrice(selectedRoom),
+    status: 'pending'
+  };
+
+  // Add the order to the history
+  addOrderToHistory(order);
+
+  // Clear the form
+  clearForm();
+}
+	</script>
+</body>
+</html>
